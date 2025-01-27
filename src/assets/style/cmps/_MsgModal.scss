@@ -1,0 +1,35 @@
+@keyframes slideup {
+    0% {
+        bottom: 0%;
+        opacity: 0;
+    }
+    
+    50% {
+        bottom: 10%;
+        opacity: 1;
+    }
+
+    100% {
+        bottom: 0%;
+    }
+}
+
+.msg-modal {
+    opacity: 0;
+    padding: 1rem 2rem;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    bottom: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: $clr-primary;
+    border-radius: .5rem;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px -1px,
+        rgba(0, 0, 0, 0.14) 0px 4px 5px 0px,
+        rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
+
+    &.show {
+        animation: slideup 3s;
+    }
+}

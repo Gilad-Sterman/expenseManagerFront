@@ -1,0 +1,94 @@
+.home-page {
+    padding: .5rem;
+    width: 100%;
+    height: calc(100vh - 80px);
+
+    h2 {
+        font-size: 2rem;
+    }
+
+    .no-expenses {
+        width: max-content;
+        margin: auto;
+        text-align: center;
+    }
+
+    .new-expense {
+        padding: 1rem 2rem;
+        font-size: 1.5rem;
+        background-color: $clr-primary;
+    }
+
+    .chart-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 300px;
+        /* Adjust as needed */
+        position: relative;
+    }
+
+    .chart-arrow {
+        position: absolute;
+        top: 10%;
+        transform: translateY(-50%);
+        font-size: 2rem;
+        color: #333;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .chart-arrow.left {
+        right: .5rem;
+    }
+
+    .chart-arrow.right {
+        left: .5rem;
+    }
+
+    .chart-arrow.visible {
+        opacity: 1;
+        color: $clr-primary;
+    }
+
+
+    .tabs {
+        position: absolute;
+        bottom: -3rem;
+        // width: 100vw;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+
+    }
+
+    .tab {
+        padding: 5px 10px;
+        cursor: pointer;
+        background-color: #f0f0f0;
+        border-radius: 5px;
+        // margin: 0 10px;
+        transition: background-color 0.3s;
+    }
+
+    .tab.active {
+        background-color: #36A2EB;
+        color: white;
+        font-weight: bold;
+    }
+
+    h4 {
+        text-align: center;
+        margin-top: 5rem;
+        // transform: translate(-50% -50%);
+        color: $clr-redish;
+        font-size: 1.5rem;
+
+        span {
+            color: $clr-primary;
+        }
+    }
+
+}

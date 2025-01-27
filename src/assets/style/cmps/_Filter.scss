@@ -1,0 +1,201 @@
+.filter {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 1rem;
+    border: 1px solid $clr-primary;
+    border-radius: .5rem;
+    gap: 1rem;
+    margin-top: 1rem;
+    // height: 70px;
+
+    .tag {
+        position: absolute;
+        top: -.5rem;
+        right: .75rem;
+        font-size: .85rem;
+        font-weight: bold;
+        padding-inline: .25rem;
+        background-color: $clr-bg;
+        color: $clr-primary;
+    }
+
+    .search-input {
+        display: flex;
+        align-items: center;
+        border-radius: .25rem;
+        border: 1px solid $clr-primary;
+        padding: .25rem;
+        margin-top: .5rem;
+        max-width: 250px;
+
+        label {
+            display: flex;
+            align-items: center;
+            min-width: 1rem;
+        }
+
+        img {
+            filter: $clr-primary-filter;
+            width: 1rem;
+            height: 1rem;
+        }
+
+        input {
+            background-color: transparent;
+            border: none;
+
+            &:focus-visible {
+                border: none;
+                outline: none;
+            }
+        }
+
+        @media (min-width: 500px) {
+            margin-top: 0;
+        }
+    }
+
+    .paid-options {
+        color: $clr-primary;
+
+        .paid-checkbox {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    form {
+        // padding: 1rem;
+        gap: .5rem;
+
+        label {
+            color: $clr-primary;
+        }
+
+        input {
+            padding: 16.5px 14px;
+            border-radius: .25rem;
+            border: 0;
+            outline: 1px solid $clr-secondary;
+
+            &:hover {
+                outline: 1px solid rgb(23, 22, 22);
+                cursor: text;
+            }
+        }
+
+        @media (max-width: 500px) {
+            input {
+                padding: .5rem;
+            }
+        }
+    }
+
+    .max-inventory {
+        display: flex;
+        // flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        margin-inline: .5rem;
+        // height: 50px;
+        color: $clr-primary;
+
+        .inventory-checkbox {
+            display: flex;
+            align-items: center;
+
+            label {
+                width: max-content;
+            }
+        }
+
+        .num-input {
+            width: 3rem;
+            border-radius: .25rem;
+            border: 1px solid $clr-primary;
+            padding: .25rem;
+        }
+    }
+
+    .sort {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 50px;
+        margin: 0;
+        padding: 0;
+
+        span {
+            color: $clr-primary;
+            width: 50px;
+            font-size: 1rem;
+            text-align: start;
+        }
+
+    }
+
+    .select-modal {
+        background-color: $clr-primary;
+        position: absolute;
+        padding: .5rem;
+        // right: -180px;
+        top: -1rem;
+        right: .5rem;
+        border-radius: .5rem;
+        transition: all 1s;
+
+        .select-option {
+            color: $clr-bg;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90px;
+
+            img {
+                width: 16px;
+                height: 16px;
+                filter: invert(100%) sepia(89%) saturate(312%) hue-rotate(52deg) brightness(108%) contrast(91%);
+            }
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .sortDir {
+        filter: invert(19%) sepia(65%) saturate(1132%) hue-rotate(171deg) brightness(94%) contrast(88%);
+        width: 24px;
+        height: 24px;
+        transition: all 600ms;
+
+
+        &.up {
+            transform: rotate(-180deg);
+        }
+
+    }
+
+    .type-filter {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: .75rem;
+
+        span {
+            padding: .25rem .5rem;
+            border-radius: .5rem;
+            background-color: $clr-secondary;
+            color: $clr-section-blue-deep;
+            
+            
+            &.selected {
+                background-color: $clr-primary;
+                color: $clr-bg;
+            }
+        }
+    }
+}

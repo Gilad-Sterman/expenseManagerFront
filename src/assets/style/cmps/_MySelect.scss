@@ -1,0 +1,60 @@
+.my-select {
+    margin-bottom: 1rem;
+    position: relative;
+
+    .selected {
+        width: 105px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: .5rem;
+        padding: .5rem;
+        border: 1px solid $clr-primary;
+        border-radius: .5rem;
+
+        img {
+            filter: $clr-primary-filter;
+
+            &.open {
+                transform: rotate(90deg);
+            }
+        }
+
+        span {
+            color: $clr-primary;
+        }
+    }
+
+    .options {
+        list-style: none;
+        padding: 0;
+        position: absolute;
+        top: 1.5rem;
+        width: 105px;
+        border-radius: .5rem;
+        background-color: $clr-primary;
+        z-index: 5;
+
+        li {
+            padding: .25rem .5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: .25rem;
+
+            img {
+                width: 16px;
+                filter: $clr-secondary-filter;
+            }
+
+            span {
+                color: $clr-bg;
+            }
+
+            img {
+                filter: $clr-bg-filter;
+            }
+
+        }
+    }
+}

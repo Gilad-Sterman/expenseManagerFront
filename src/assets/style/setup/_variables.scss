@@ -1,0 +1,38 @@
+$clr-primary: #2d84bd; // A soft blue for primary buttons and accents
+$clr-primary-filter: brightness(0) saturate(100%) invert(71%) sepia(10%) saturate(1445%) hue-rotate(190deg) brightness(90%) contrast(92%);
+
+$clr-secondary: #a4c2a9; // A subtle green for secondary buttons and highlights
+$clr-secondary-filter: brightness(0) saturate(100%) invert(82%) sepia(8%) saturate(429%) hue-rotate(86deg) brightness(91%) contrast(91%);
+
+$clr-bg: #ece3d6; // A light, warm beige with a subtle hue
+$clr-bg-filter: brightness(0) saturate(100%) invert(92%) sepia(12%) saturate(371%) hue-rotate(35deg) brightness(96%) contrast(88%);
+
+$clr-txt: #6b6e76; // A neutral gray for text
+$clr-txt-filter: brightness(0) saturate(100%) invert(30%) sepia(4%) saturate(7%) hue-rotate(201deg) brightness(92%) contrast(86%);
+
+$clr-header: #5a84c4e7; // Matching the primary color for headers
+$clr-header-filter: brightness(0) saturate(100%) invert(71%) sepia(10%) saturate(1445%) hue-rotate(190deg) brightness(90%) contrast(92%);
+
+$clr-footer: #f6d1c4; // A warm blush for the footer background
+$clr-footer-filter: brightness(0) saturate(100%) invert(88%) sepia(35%) saturate(301%) hue-rotate(327deg) brightness(94%) contrast(91%);
+
+// Soft complimentary shades
+$clr-section-blue-light: #96c5f1; // Light pastel blue
+$clr-section-blue-light-filter: brightness(0) saturate(100%) invert(91%) sepia(3%) saturate(177%) hue-rotate(193deg) brightness(92%) contrast(89%);
+
+$clr-section-green-light: #e5f0e8; // Light pastel green
+$clr-section-green-light-filter: brightness(0) saturate(100%) invert(92%) sepia(4%) saturate(159%) hue-rotate(91deg) brightness(96%) contrast(85%);
+
+$clr-section-blush-light: #fae8e5; // Light blush
+$clr-section-blush-light-filter: brightness(0) saturate(100%) invert(93%) sepia(16%) saturate(262%) hue-rotate(333deg) brightness(95%) contrast(88%);
+
+// Rich accent shades
+$clr-section-blue-deep: #4a72a8; // Deeper blue for contrast
+$clr-section-blue-deep-filter: brightness(0) saturate(100%) invert(59%) sepia(12%) saturate(1327%) hue-rotate(200deg) brightness(87%) contrast(89%);
+
+$clr-section-green-deep: #74967e; // Deeper muted green
+$clr-section-green-deep-filter: brightness(0) saturate(100%) invert(71%) sepia(7%) saturate(404%) hue-rotate(90deg) brightness(90%) contrast(85%);
+
+$clr-section-blush-deep: #e7cdc6; // Deeper blush for sections
+$clr-redish: #dc5b38; // Deeper blush for sections
+$clr-section-blush-deep-filter: brightness(0) saturate(100%) invert(85%) sepia(24%) saturate(368%) hue-rotate(332deg) brightness(87%) contrast(89%);

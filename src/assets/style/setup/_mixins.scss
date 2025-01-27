@@ -1,0 +1,11 @@
+@mixin for-narrow-layout {
+    @media (min-width: 520px) {
+        @content;
+    }
+}
+
+@mixin for-normal-layout {
+    @media (min-width: 760px) {
+        @content;
+    }
+}
