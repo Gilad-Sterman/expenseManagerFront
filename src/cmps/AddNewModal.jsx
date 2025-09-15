@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { MsgModal } from "./MsgModal"
-import { X, Plus, Calendar, DollarSign, Tag, CreditCard, AlertCircle } from "lucide-react"
+import { X, Plus, Calendar, DollarSign, Tag, CreditCard, AlertCircle, Check } from "lucide-react"
+import { suggestionService } from "../services/suggestion.service"
 
 export function AddNewModal({ type, addFunc, objectToAdd, setShowAdd, expenseTypes }) {
     const loggedUser = useSelector(storeState => storeState.userModule.user)

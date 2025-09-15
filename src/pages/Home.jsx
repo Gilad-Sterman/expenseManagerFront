@@ -35,6 +35,7 @@ export function Home() {
         }
     }, [month, selectedTab, loggedUser])
 
+
     function getData() {
         const doughnutData = utilService.getDataFromUser(loggedUser, month)
         const myBar1Data = utilService.getBar1Data(loggedUser, selectedTab)

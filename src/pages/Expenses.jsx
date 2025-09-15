@@ -266,6 +266,10 @@ export function Expenses() {
                                 </div>
                                 
                                 <div className="card-body">
+                                    {expense.name && <div className="expense-title">
+                                        <span>{expense.name}</span>
+                                    </div>}
+                                    
                                     <div className="expense-description">
                                         <h3>{expense.desc}</h3>
                                     </div>

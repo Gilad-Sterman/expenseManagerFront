@@ -8,7 +8,8 @@ export const expenseService = {
     getExpenses,
     getExpensesByMonth,
     getExpenseTypes,
-    updateExpenses
+    updateExpenses,
+    updateRecurringExpenses
 }
 
 function getExpenses(filterBy, expenses) {
@@ -68,6 +69,22 @@ async function updateExpenses(newExpenses, userId) {
         const res = await httpService.put(`user/updateExpenses`, { newExpenses, userId })
         const user = userService.getLoggedinUser()
         user.expenses = newExpenses
+        userService.saveLocalUser(user)
+        updateUser(user)
+        return user
+    } catch (err) {
+        console.log(err)
+    }
+}
+
+async function updateRecurringExpenses(recurringExpenses, userId) {
+    try {
+        // In a real app, you would make an API call here
+        // const res = await httpService.put(`user/updateRecurringExpenses`, { recurringExpenses, userId })
+        const res = await httpService.put(`user/updateRecurringExpenses`, { recurringExpenses, userId })
+        // For now, we'll just update the local user object
+        const user = userService.getLoggedinUser()
+        user.recurringExpenses = recurringExpenses
         userService.saveLocalUser(user)
         updateUser(user)
         return user

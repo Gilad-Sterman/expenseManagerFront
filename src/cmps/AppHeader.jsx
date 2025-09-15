@@ -2,7 +2,7 @@ import { useSelector } from "react-redux"
 import { NavLink, useNavigate } from "react-router-dom"
 import { logout } from "../store/user.actions"
 import { useState } from "react"
-import { HomeIcon, ListPlus, LogIn, Plus, User, BarChart3 } from 'lucide-react';
+import { HomeIcon, ListPlus, LogIn, Plus, User, BarChart3, Clock } from 'lucide-react';
 
 export function AppHeader() {
     const loggedUser = useSelector(storeState => storeState.userModule.user)
@@ -35,6 +35,10 @@ export function AppHeader() {
                         <NavLink to={'/expenses'} className="nav-item">
                             <ListPlus size={20} />
                             <span>הוצאות</span>
+                        </NavLink>
+                        <NavLink to={'/recurring'} className="nav-item">
+                            <Clock size={20} />
+                            <span>הוצאות קבועות</span>
                         </NavLink>
                     </nav>
                 )}
@@ -85,6 +89,10 @@ export function AppHeader() {
                     <NavLink to={'/expenses'} className="mobile-nav-item" onClick={() => setShowNav(false)}>
                         <ListPlus size={24} />
                         <span>הוצאות</span>
+                    </NavLink>
+                    <NavLink to={'/recurring'} className="mobile-nav-item" onClick={() => setShowNav(false)}>
+                        <Clock size={24} />
+                        <span>הוצאות קבועות</span>
                     </NavLink>
                     <button className="mobile-nav-item logout" onClick={onLogout}>
                         <LogIn size={24} />

@@ -9,6 +9,7 @@ import { Signup } from './pages/Signup';
 import { Logger } from 'sass';
 import { Login } from './pages/Login';
 import { Expenses } from './pages/Expenses';
+import { RecurringExpenses } from './pages/RecurringExpenses';
 
 function App() {
   const loggedUser = useSelector(storeState => storeState.userModule.user)
@@ -29,6 +30,7 @@ function App() {
           <section className='main-content'>
             <Routes>
               <Route path="/expenses" Component={Expenses} />
+              <Route path="/recurring" Component={RecurringExpenses} />
               <Route path="/signup" Component={Signup} />
               <Route path="/login" Component={Login} />
               <Route path='/' Component={Home} />
