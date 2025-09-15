@@ -5,12 +5,17 @@
 
 
 body {
-    font-family: 'Roboto', sans-serif;
     direction: rtl;
     margin: 0;
     text-align: start;
     overflow-x: hidden;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: $font-primary;
+    font-size: $text-base;
+    line-height: $leading-normal;
+    color: $clr-txt;
+    background: $clr-bg;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 h1,
@@ -19,22 +24,27 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0 0 .5em;
-    color: $clr-primary;
+    margin: 0 0 $spacing-md;
+    font-family: $font-heading;
+    color: $clr-txt-dark;
+    font-weight: $font-semibold;
 }
 
-p {
-    font-size: 1.5rem;
-    text-align: justify;
-    line-height: 1.75rem;
-    max-width: 700px;
-    margin: auto;
-    color: $clr-txt;
+h1 { @extend .heading-1; }
+h2 { @extend .heading-2; }
+h3 { @extend .heading-3; }
+h4 { @extend .heading-4; }
+h5 { @extend .heading-5; }
+h6 { @extend .heading-6; }
 
-    @media (max-width: 500px) {
-        font-size: 1rem;
-        line-height: 1.5rem;
-        padding-inline: 1rem;
+p {
+    @extend .text-base;
+    margin: 0 0 $spacing-lg;
+    max-width: 65ch;
+    
+    @include for-mobile {
+        font-size: $text-sm;
+        padding-inline: $spacing-lg;
     }
 }
 
@@ -85,11 +95,12 @@ button {
     align-items: center;
     justify-content: center;
     color: $clr-txt;
-    margin: 0.5em;
+    // margin: 0.5em;
     border: 0;
-    padding: 0.5em 0.8em;
+    // padding: 0.5em 0.8em;
     border-radius: 4px;
     background-color: $clr-secondary;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
     &:hover {
         transition: .3s;

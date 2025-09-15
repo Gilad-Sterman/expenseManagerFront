@@ -19,10 +19,6 @@ export function Signup() {
 
     async function onSignup(ev) {
         ev.preventDefault()
-        user.expenses = []
-        login(user)
-        navigate('/')
-        return
         try {
             const res = await userService.signup(user)
             if (res._id) {
@@ -49,6 +45,10 @@ export function Signup() {
                     <div className="my-input">
                         <label htmlFor="username">שם משתמש:</label>
                         <input type="text" name="username" id="username" required onInput={setNewUser} />
+                    </div>
+                    <div className="my-input">
+                        <label htmlFor="password">סיסמא:</label>
+                        <input type="password" name="password" id="password" required onInput={setNewUser} />
                     </div>
                     <button>הרשמה</button>
                 </form>

@@ -1,10 +1,460 @@
 .home-page {
-    padding: .5rem;
-    width: 100%;
-    height: calc(100vh - 80px);
+    padding: $spacing-lg;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: calc(100vh - 70px);
 
-    h2 {
-        font-size: 2rem;
+    @include for-mobile {
+        padding: $spacing-md;
+        min-height: calc(100vh - 60px);
+    }
+
+    // Hero Section
+    .hero-section {
+        text-align: center;
+        padding: $spacing-2xl 0;
+        margin-bottom: $spacing-xl;
+
+        @include for-mobile {
+            padding: $spacing-xl 0;
+            margin-bottom: $spacing-lg;
+        }
+
+        .hero-content {
+            .hero-title {
+                @extend .heading-1;
+                margin-bottom: $spacing-sm;
+                background: linear-gradient(135deg, $clr-primary, $clr-primary-light);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            .hero-subtitle {
+                @extend .text-large;
+                color: $clr-txt-muted;
+                margin: 0;
+            }
+        }
+    }
+
+    // Empty State
+    .empty-state {
+        @include flex-center;
+        min-height: 400px;
+
+        .empty-state-card {
+            @include card($spacing-2xl, $radius-xl);
+            text-align: center;
+            max-width: 400px;
+
+            .empty-state-icon {
+                @include flex-center;
+                width: 80px;
+                height: 80px;
+                background: linear-gradient(135deg, $clr-primary-light, $clr-primary);
+                border-radius: $radius-full;
+                margin: 0 auto $spacing-lg;
+                color: $clr-white;
+            }
+
+            .empty-state-title {
+                @extend .heading-3;
+                margin-bottom: $spacing-md;
+            }
+
+            .empty-state-description {
+                @extend .text-base;
+                color: $clr-txt-muted;
+                margin-bottom: $spacing-xl;
+                line-height: $leading-relaxed;
+            }
+
+            .empty-state-btn {
+                @include btn-primary;
+                text-decoration: none;
+                font-size: $text-base;
+                padding: $spacing-md $spacing-xl;
+            }
+        }
+    }
+
+    // Overview Cards
+    .overview-cards {
+        @include grid-auto-fit(280px, $spacing-lg);
+        margin-bottom: $spacing-2xl;
+
+        @include for-mobile {
+            grid-template-columns: 1fr;
+            gap: $spacing-md;
+            margin-bottom: $spacing-xl;
+        }
+
+        .overview-card {
+            @include card($spacing-lg, $radius-xl);
+            @include hover-lift;
+            position: relative;
+            overflow: hidden;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: linear-gradient(90deg, $clr-primary, $clr-primary-light);
+            }
+
+            &.total-expenses::before {
+                background: linear-gradient(90deg, $clr-error, $clr-error-light);
+            }
+
+            &.budget-card::before {
+                background: linear-gradient(90deg, $clr-warning, $clr-warning-light);
+            }
+
+            &.savings-card::before {
+                background: linear-gradient(90deg, $clr-success, $clr-success-light);
+            }
+
+            .card-header {
+                @include flex-between;
+                margin-bottom: $spacing-lg;
+
+                h3 {
+                    @extend .heading-5;
+                    margin: 0;
+                    color: $clr-txt-muted;
+                }
+
+                .card-icon {
+                    @include flex-center;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: $radius-lg;
+
+                    &.expenses {
+                        background: linear-gradient(135deg, $clr-error-light, $clr-error);
+                        color: $clr-white;
+                    }
+
+                    &.budget {
+                        background: linear-gradient(135deg, $clr-warning-light, $clr-warning);
+                        color: $clr-white;
+                    }
+
+                    &.savings {
+                        background: linear-gradient(135deg, $clr-success-light, $clr-success);
+                        color: $clr-white;
+                    }
+                }
+            }
+
+            .card-value {
+                @include flex-center;
+                justify-content: flex-start;
+                gap: $spacing-xs;
+                margin-bottom: $spacing-md;
+
+                .amount {
+                    font-family: $font-heading;
+                    font-size: $text-3xl;
+                    font-weight: $font-bold;
+                    color: $clr-txt-dark;
+                    line-height: 1;
+
+                    @include for-mobile {
+                        font-size: $text-2xl;
+                    }
+                }
+
+                .currency {
+                    font-size: $text-lg;
+                    color: $clr-txt-muted;
+                    font-weight: $font-medium;
+                }
+            }
+
+            .card-trend {
+                .trend-text {
+                    @extend .text-small;
+                    color: $clr-txt-muted;
+                }
+
+                &.positive {
+                    .trend-text {
+                        color: $clr-success;
+                    }
+                }
+                
+                &.negative {
+                    .trend-text {
+                        color: $clr-error;
+                    }
+                }
+            }
+
+            .card-comparison {
+                margin-top: $spacing-xs;
+
+                .comparison-text {
+                    @extend .text-xs;
+                    color: $clr-txt-muted;
+                    font-style: italic;
+                }
+            }
+
+            .card-progress {
+                .progress-bar {
+                    width: 100%;
+                    height: 6px;
+                    background: $clr-gray-200;
+                    border-radius: $radius-full;
+                    overflow: hidden;
+                    margin-bottom: $spacing-sm;
+
+                    .progress-fill {
+                        height: 100%;
+                        background: linear-gradient(90deg, $clr-warning, $clr-warning-light);
+                        border-radius: $radius-full;
+                        transition: width $transition-normal;
+                    }
+                }
+
+                .progress-text {
+                    @extend .text-xs;
+                    color: $clr-txt-muted;
+                }
+            }
+        }
+    }
+
+    // Controls Section
+    .controls-section {
+        margin-bottom: $spacing-2xl;
+
+        .controls-card {
+            @include card($spacing-lg, $radius-lg);
+            @include flex-between;
+            gap: $spacing-lg;
+
+            @include for-mobile {
+                flex-direction: column;
+                align-items: stretch;
+                gap: $spacing-md;
+            }
+
+            .month-selector,
+            .chart-type-selector {
+                @include flex-center;
+                gap: $spacing-md;
+
+                @include for-mobile {
+                    justify-content: space-between;
+                }
+
+                label {
+                    @extend .text-small;
+                    font-weight: $font-medium;
+                    color: $clr-txt;
+                    white-space: nowrap;
+                }
+            }
+
+            .chart-buttons {
+                @include flex-center;
+                gap: $spacing-xs;
+                background: $clr-gray-100;
+                padding: $spacing-xs;
+                border-radius: $radius-md;
+
+                .chart-btn {
+                    @include flex-center;
+                    gap: $spacing-xs;
+                    padding: $spacing-sm $spacing-md;
+                    background: transparent;
+                    border: none;
+                    border-radius: $radius-sm;
+                    color: $clr-txt;
+                    font-size: $text-sm;
+                    font-weight: $font-medium;
+                    cursor: pointer;
+                    transition: all $transition-fast;
+
+                    &:hover {
+                        background: rgba($clr-primary, 0.1);
+                        color: $clr-primary;
+                    }
+
+                    &.active {
+                        background: $clr-primary;
+                        color: $clr-white;
+                        box-shadow: $shadow-sm;
+                    }
+                }
+            }
+        }
+    }
+
+    // Charts Section
+    .charts-section {
+        margin-bottom: $spacing-2xl;
+
+        .chart-container {
+            @include card($spacing-xl, $radius-lg);
+            position: relative;
+            min-height: 400px;
+            @include flex-center;
+
+            .chart-arrow {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 40px;
+                height: 40px;
+                @include flex-center;
+                background: rgba($clr-primary, 0.1);
+                border-radius: $radius-full;
+                color: $clr-primary;
+                font-size: $text-lg;
+                cursor: pointer;
+                opacity: 0;
+                transition: all $transition-fast;
+                z-index: 10;
+
+                &:hover {
+                    background: $clr-primary;
+                    color: $clr-white;
+                    transform: translateY(-50%) scale(1.1);
+                }
+
+                &.visible {
+                    opacity: 1;
+                }
+
+                &.left {
+                    right: $spacing-lg;
+                }
+
+                &.right {
+                    left: $spacing-lg;
+                }
+            }
+
+            .bar-charts {
+                @include flex-column;
+                gap: $spacing-xl;
+                width: 100%;
+                align-items: center;
+
+                @include for-normal-layout {
+                    flex-direction: row;
+                    justify-content: space-around;
+                }
+            }
+        }
+    }
+
+    // Tabs
+    .tabs {
+        @include flex-center;
+        flex-wrap: wrap;
+        gap: $spacing-sm;
+        margin-bottom: $spacing-xl;
+
+        .tab {
+            padding: $spacing-sm $spacing-md;
+            background: $clr-gray-100;
+            border: 2px solid transparent;
+            border-radius: $radius-md;
+            color: $clr-txt;
+            font-size: $text-sm;
+            font-weight: $font-medium;
+            cursor: pointer;
+            transition: all $transition-fast;
+
+            &:hover {
+                background: $clr-gray-200;
+                color: $clr-txt-dark;
+            }
+
+            &.active {
+                background: $clr-primary;
+                color: $clr-white;
+                border-color: $clr-primary;
+                box-shadow: $shadow-sm;
+            }
+        }
+    }
+
+    // Chart Details
+    .chart-details {
+        @include card($spacing-lg, $radius-lg);
+        @include grid-auto-fit(200px, $spacing-md);
+
+        .detail-item {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            align-items: center;
+            gap: $spacing-sm;
+            padding: $spacing-sm 0;
+            border-bottom: 1px solid $clr-gray-200;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            .detail-label {
+                @extend .text-small;
+                color: $clr-txt;
+                font-weight: $font-medium;
+            }
+
+            .detail-value {
+                @extend .text-small;
+                color: $clr-txt-dark;
+                font-weight: $font-semibold;
+                text-align: right;
+            }
+
+            .detail-trend {
+                @include flex-center;
+                gap: 4px;
+                padding: $spacing-xs $spacing-sm;
+                border-radius: $radius-md;
+                font-size: $text-xs;
+                font-weight: $font-semibold;
+                white-space: nowrap;
+
+                &.positive {
+                    color: $clr-error;
+                    background-color: rgba($clr-error, 0.1);
+                    
+                    .trend-icon {
+                        color: $clr-error;
+                    }
+                }
+                
+                &.negative {
+                    background-color: rgba($clr-success, 0.1);
+                    color: $clr-success;
+                    
+                    .trend-icon {
+                        color: $clr-success;
+                    }
+                }
+
+                &.neutral {
+                    background-color: rgba($clr-gray-400, 0.1);
+                    color: $clr-txt-muted;
+                }
+
+                .trend-percent {
+                    font-size: $text-xs;
+                }
+            }
+        }
     }
 
     .no-expenses {
@@ -23,9 +473,24 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 300px;
-        /* Adjust as needed */
+        height: 250px;
         position: relative;
+    }
+
+    .details {
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+
+        p {
+            font-size: 1rem;
+            padding: 0;
+        }
+
+        span {
+            font-weight: bold;
+        }
     }
 
     .chart-arrow {
@@ -40,11 +505,11 @@
     }
 
     .chart-arrow.left {
-        right: .5rem;
+        right: .25rem;
     }
 
     .chart-arrow.right {
-        left: .5rem;
+        left: .25rem;
     }
 
     .chart-arrow.visible {
@@ -52,15 +517,24 @@
         color: $clr-primary;
     }
 
+    .bar-charts {
+        display: flex;
+        flex-direction: column;
+        margin-block: 2rem;
+        width: 80%;
+        align-items: center;
+
+        @media (min-width: 500px) {
+            flex-direction: row;
+        }
+    }
 
     .tabs {
-        position: absolute;
-        bottom: -3rem;
-        // width: 100vw;
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        gap: 1rem;
+        margin-top: 2rem;
+        gap: .5rem;
 
     }
 
@@ -69,7 +543,6 @@
         cursor: pointer;
         background-color: #f0f0f0;
         border-radius: 5px;
-        // margin: 0 10px;
         transition: background-color 0.3s;
     }
 
@@ -77,18 +550,6 @@
         background-color: #36A2EB;
         color: white;
         font-weight: bold;
-    }
-
-    h4 {
-        text-align: center;
-        margin-top: 5rem;
-        // transform: translate(-50% -50%);
-        color: $clr-redish;
-        font-size: 1.5rem;
-
-        span {
-            color: $clr-primary;
-        }
     }
 
 }

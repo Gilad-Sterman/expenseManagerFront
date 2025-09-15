@@ -21,7 +21,6 @@ export function Login() {
         ev.preventDefault()
         try {
             const res = await userService.login(user)
-            console.log(res);
             if (res._id) {
                 login(res)
                 navigate('/')
@@ -46,6 +45,10 @@ export function Login() {
                     <div className="my-input">
                         <label htmlFor="username">שם משתמש:</label>
                         <input type="text" name="username" id="username" required onInput={setNewUser} />
+                    </div>
+                    <div className="my-input">
+                        <label htmlFor="password">סיסמא:</label>
+                        <input type="password" name="password" id="password" required onInput={setNewUser} />
                     </div>
                     <button>כניסה</button>
                 </form>

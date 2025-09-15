@@ -63,8 +63,7 @@ function getLoggedinUser() {
 }
 
 async function login(user) {
-    return new Promise(resolve => setTimeout(() => resolve(users.find(u => u.username === user.username)), 200))
-
+    // return new Promise(resolve => setTimeout(() => resolve(users.find(u => u.username === user.username)), 200))
     try {
         const userRes = await httpService.get(`${STORAGE_KEY}/login`, user)
         return userRes

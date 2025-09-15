@@ -1,6 +1,193 @@
+// ===== FONT IMPORTS =====
+// Modern font system - Inter for clean, professional look
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+// Poppins as alternative for headings
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+// Keep existing fonts for compatibility
 @import url('https://fonts.googleapis.com/css2?family=Edu+VIC+WA+NT+Beginner&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css');
 @import url('https://fonts.googleapis.com/css2?family=Alef&family=Lora&family=Suez+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jost&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+// ===== FONT FAMILIES =====
+$font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+$font-heading: 'Poppins', $font-primary;
+$font-mono: 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+
+// ===== TYPOGRAPHY UTILITY CLASSES =====
+
+// Heading styles
+.heading-1 {
+    font-family: $font-heading;
+    font-size: $text-4xl;
+    font-weight: $font-bold;
+    line-height: $leading-tight;
+    color: $clr-txt-dark;
+    
+    @include for-mobile {
+        font-size: $text-3xl;
+    }
+}
+
+.heading-2 {
+    font-family: $font-heading;
+    font-size: $text-3xl;
+    font-weight: $font-semibold;
+    line-height: $leading-tight;
+    color: $clr-txt-dark;
+    
+    @include for-mobile {
+        font-size: $text-2xl;
+    }
+}
+
+.heading-3 {
+    font-family: $font-heading;
+    font-size: $text-2xl;
+    font-weight: $font-semibold;
+    line-height: $leading-snug;
+    color: $clr-txt-dark;
+    
+    @include for-mobile {
+        font-size: $text-xl;
+    }
+}
+
+.heading-4 {
+    font-family: $font-heading;
+    font-size: $text-xl;
+    font-weight: $font-medium;
+    line-height: $leading-snug;
+    color: $clr-txt;
+}
+
+.heading-5 {
+    font-family: $font-heading;
+    font-size: $text-lg;
+    font-weight: $font-medium;
+    line-height: $leading-normal;
+    color: $clr-txt;
+}
+
+.heading-6 {
+    font-family: $font-heading;
+    font-size: $text-base;
+    font-weight: $font-semibold;
+    line-height: $leading-normal;
+    color: $clr-txt;
+}
+
+// Body text styles
+.text-large {
+    font-family: $font-primary;
+    font-size: $text-lg;
+    font-weight: $font-normal;
+    line-height: $leading-relaxed;
+    color: $clr-txt;
+}
+
+.text-base {
+    font-family: $font-primary;
+    font-size: $text-base;
+    font-weight: $font-normal;
+    line-height: $leading-normal;
+    color: $clr-txt;
+}
+
+.text-small {
+    font-family: $font-primary;
+    font-size: $text-sm;
+    font-weight: $font-normal;
+    line-height: $leading-normal;
+    color: $clr-txt;
+}
+
+.text-xs {
+    font-family: $font-primary;
+    font-size: $text-xs;
+    font-weight: $font-normal;
+    line-height: $leading-normal;
+    color: $clr-txt-muted;
+}
+
+// Text modifiers
+.text-muted {
+    color: $clr-txt-muted;
+}
+
+.text-light {
+    color: $clr-txt-light;
+}
+
+.text-dark {
+    color: $clr-txt-dark;
+}
+
+.text-primary {
+    color: $clr-primary;
+}
+
+.text-secondary {
+    color: $clr-secondary;
+}
+
+.text-success {
+    color: $clr-success;
+}
+
+.text-warning {
+    color: $clr-warning;
+}
+
+.text-error {
+    color: $clr-error;
+}
+
+// Font weights
+.font-light {
+    font-weight: $font-light;
+}
+
+.font-normal {
+    font-weight: $font-normal;
+}
+
+.font-medium {
+    font-weight: $font-medium;
+}
+
+.font-semibold {
+    font-weight: $font-semibold;
+}
+
+.font-bold {
+    font-weight: $font-bold;
+}
+
+// Text alignment
+.text-left {
+    text-align: left;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+// Special text styles
+.text-gradient {
+    background: linear-gradient(135deg, $clr-primary, $clr-primary-light);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: $font-semibold;
+}
+
+.text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}

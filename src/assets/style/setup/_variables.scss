@@ -1,21 +1,35 @@
+// ===== CORE BRAND COLORS =====
 $clr-primary: #2d84bd; // A soft blue for primary buttons and accents
+$clr-primary-light: #4a9bd1; // Lighter variant
+$clr-primary-dark: #1f5a85; // Darker variant
 $clr-primary-filter: brightness(0) saturate(100%) invert(71%) sepia(10%) saturate(1445%) hue-rotate(190deg) brightness(90%) contrast(92%);
 
 $clr-secondary: #a4c2a9; // A subtle green for secondary buttons and highlights
+$clr-secondary-light: #b8d0bc; // Lighter variant
+$clr-secondary-dark: #7a9580; // Darker variant
 $clr-secondary-filter: brightness(0) saturate(100%) invert(82%) sepia(8%) saturate(429%) hue-rotate(86deg) brightness(91%) contrast(91%);
 
+// ===== BACKGROUND COLORS =====
 $clr-bg: #ece3d6; // A light, warm beige with a subtle hue
+$clr-bg-secondary: #f5f0e8; // Even lighter background
+$clr-bg-dark: #e0d5c6; // Slightly darker background
 $clr-bg-filter: brightness(0) saturate(100%) invert(92%) sepia(12%) saturate(371%) hue-rotate(35deg) brightness(96%) contrast(88%);
 
+// ===== TEXT COLORS =====
 $clr-txt: #6b6e76; // A neutral gray for text
+$clr-txt-light: #8a8d94; // Lighter text
+$clr-txt-dark: #4a4d54; // Darker text
+$clr-txt-muted: #9ca0a7; // Muted text
 $clr-txt-filter: brightness(0) saturate(100%) invert(30%) sepia(4%) saturate(7%) hue-rotate(201deg) brightness(92%) contrast(86%);
 
+// ===== HEADER & FOOTER =====
 $clr-header: #5a84c4e7; // Matching the primary color for headers
 $clr-header-filter: brightness(0) saturate(100%) invert(71%) sepia(10%) saturate(1445%) hue-rotate(190deg) brightness(90%) contrast(92%);
 
 $clr-footer: #f6d1c4; // A warm blush for the footer background
 $clr-footer-filter: brightness(0) saturate(100%) invert(88%) sepia(35%) saturate(301%) hue-rotate(327deg) brightness(94%) contrast(91%);
 
+// ===== SECTION COLORS =====
 // Soft complimentary shades
 $clr-section-blue-light: #96c5f1; // Light pastel blue
 $clr-section-blue-light-filter: brightness(0) saturate(100%) invert(91%) sepia(3%) saturate(177%) hue-rotate(193deg) brightness(92%) contrast(89%);
@@ -34,5 +48,106 @@ $clr-section-green-deep: #74967e; // Deeper muted green
 $clr-section-green-deep-filter: brightness(0) saturate(100%) invert(71%) sepia(7%) saturate(404%) hue-rotate(90deg) brightness(90%) contrast(85%);
 
 $clr-section-blush-deep: #e7cdc6; // Deeper blush for sections
-$clr-redish: #dc5b38; // Deeper blush for sections
+$clr-redish: #dc5b38; // Red for expenses/alerts
 $clr-section-blush-deep-filter: brightness(0) saturate(100%) invert(85%) sepia(24%) saturate(368%) hue-rotate(332deg) brightness(87%) contrast(89%);
+
+// ===== SEMANTIC COLORS =====
+$clr-success: #10b981; // Emerald green for income/success
+$clr-success-light: #34d399;
+$clr-success-dark: #059669;
+
+$clr-warning: #f59e0b; // Amber for warnings
+$clr-warning-light: #fbbf24;
+$clr-warning-dark: #d97706;
+
+$clr-error: #ef4444; // Red for errors
+$clr-error-light: #f87171;
+$clr-error-dark: #dc2626;
+
+$clr-info: $clr-primary; // Use primary blue for info
+
+// ===== NEUTRAL COLORS =====
+$clr-white: #ffffff;
+$clr-gray-50: #f9fafb;
+$clr-gray-100: #f3f4f6;
+$clr-gray-200: #e5e7eb;
+$clr-gray-300: #d1d5db;
+$clr-gray-400: #9ca3af;
+$clr-gray-500: #6b7280;
+$clr-gray-600: #4b5563;
+$clr-gray-700: #374151;
+$clr-gray-800: #1f2937;
+$clr-gray-900: #111827;
+
+// ===== DESIGN SYSTEM VARIABLES =====
+
+// Spacing Scale (4px grid system)
+$spacing-xs: 0.25rem;   // 4px
+$spacing-sm: 0.5rem;    // 8px
+$spacing-md: 0.75rem;   // 12px
+$spacing-lg: 1rem;      // 16px
+$spacing-xl: 1.5rem;    // 24px
+$spacing-2xl: 2rem;     // 32px
+$spacing-3xl: 3rem;     // 48px
+$spacing-4xl: 4rem;     // 64px
+
+// Border Radius
+$radius-xs: 0.125rem;   // 2px
+$radius-sm: 0.25rem;    // 4px
+$radius-md: 0.5rem;     // 8px
+$radius-lg: 0.75rem;    // 12px
+$radius-xl: 1rem;       // 16px
+$radius-2xl: 1.5rem;    // 24px
+$radius-full: 9999px;   // Full rounded
+
+// Shadows
+$shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+$shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+$shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+$shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+// Glass morphism effect
+$glass-bg: rgba(255, 255, 255, 0.1);
+$glass-border: rgba(255, 255, 255, 0.2);
+$glass-backdrop: blur(10px);
+
+// Transitions
+$transition-fast: 0.15s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Z-index scale
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;
+$z-toast: 1080;
+
+// Font sizes
+$text-xs: 0.75rem;      // 12px
+$text-sm: 0.875rem;     // 14px
+$text-base: 1rem;       // 16px
+$text-lg: 1.125rem;     // 18px
+$text-xl: 1.25rem;      // 20px
+$text-2xl: 1.5rem;      // 24px
+$text-3xl: 1.875rem;    // 30px
+$text-4xl: 2.25rem;     // 36px
+$text-5xl: 3rem;        // 48px
+
+// Font weights
+$font-light: 300;
+$font-normal: 400;
+$font-medium: 500;
+$font-semibold: 600;
+$font-bold: 700;
+
+// Line heights
+$leading-tight: 1.25;
+$leading-snug: 1.375;
+$leading-normal: 1.5;
+$leading-relaxed: 1.625;
+$leading-loose: 2;

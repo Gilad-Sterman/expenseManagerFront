@@ -1,126 +1,311 @@
+// Modern AddNewModal Component Styles
+
+// Modal Backdrop
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  animation: fadeIn 0.2s ease-out;
+}
+
+// Modal Container
 .add-new-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: $clr-white;
+  border-radius: $radius-xl;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  z-index: 1001;
+  width: 90vw;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow: hidden;
+  animation: slideIn 0.3s ease-out;
+  
+  // Modal Header
+  .modal-header {
     display: flex;
-    flex-direction: column;
     align-items: center;
-    padding: 1rem;
-    background-color: $clr-primary;
-    border-radius: .5rem;
-    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px -1px,
-        rgba(0, 0, 0, 0.14) 0px 4px 5px 0px,
-        rgba(0, 0, 0, 0.12) 0px 1px 10px 0px;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 80vw;
-    z-index: 10;
-
-    h3 {
-        color: $clr-bg;
-    }
-
-    .close-btn {
-        position: absolute;
-        top: .25rem;
-        right: .25rem;
-        padding: .25rem;
-        border-radius: 50%;
-
-        img {
-            filter: $clr-txt-filter;
-            width: 12px;
+    justify-content: space-between;
+    padding: $spacing-lg;
+    border-bottom: 1px solid $clr-bg-dark;
+    
+    .header-content {
+      display: flex;
+      align-items: center;
+      gap: $spacing-md;
+      
+      .modal-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 48px;
+        height: 48px;
+        border-radius: 9999px;
+        background: $clr-section-blue-light;
+        color: $clr-primary;
+      }
+      
+      .header-text {
+        h2 {
+          margin: 0 0 $spacing-xs 0;
+          font-size: 1.125rem;
+          font-weight: 600;
+          color: $clr-txt;
         }
+        
+        p {
+          margin: 0;
+          font-size: 0.875rem;
+          color: $clr-txt-muted;
+        }
+      }
     }
-
+    
+    .close-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 9999px;
+      color: $clr-gray-500;
+      background: transparent;
+      transition: all $transition-fast;
+      
+      &:hover {
+        background: $clr-gray-100;
+        color: $clr-gray-700;
+      }
+    }
+  }
+  
+  // Modal Body
+  .modal-body {
+    padding: $spacing-lg;
+    max-height: calc(90vh - 140px);
+    overflow-y: auto;
+    
     form {
+      display: flex;
+      flex-direction: column;
+      gap: $spacing-lg;
+      
+      // Form Groups
+      .form-group {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: .5rem;
-
-        .date-input {
-            border-radius: .5rem;
-            padding: .25rem .5rem;
-            outline: none;
-        }
-
-        .my-input {
-            display: grid;
-            grid-template-columns: 3fr 2fr;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: .25rem;
-
-            label {
-                color: $clr-bg;
-            }
-
-            select {
-                padding: .1rem .25rem;
-            }
-
-            input {
-                border-radius: .5rem;
-                border: 1px solid $clr-primary;
-
-                &:disabled {
-                    background-color: $clr-secondary;
-                }
-
-                &.green {
-                    background-color: green;
-                }
+        gap: $spacing-sm;
         
-                &.red {
-                    background-color: red;
-                }
-            }
+        .form-label {
+          display: flex;
+          align-items: center;
+          gap: $spacing-sm;
+          font-size: 0.875rem;
+          font-weight: 500;
+          color: $clr-txt;
+          
+          svg {
+            color: $clr-primary;
+          }
         }
-
-        .my-d-input,
-        .my-t-input {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 1rem;
-            margin-bottom: .25rem;
-
-            label {
-                color: $clr-txt;
-            }
-
-            input {
-                border-radius: .5rem;
-                border: 1px solid $clr-primary;
-
-                &:disabled {
-                    background-color: $clr-secondary;
-                }
-
-
-            }
+        
+        .form-input {
+          width: 100%;
+          padding: $spacing-sm $spacing-md;
+          border: 1px solid $clr-bg-dark;
+          border-radius: $radius-md;
+          background: $clr-white;
+          color: $clr-txt;
+          font-size: 0.875rem;
+          transition: all $transition-fast;
+          
+          &:focus {
+            outline: none;
+            border-color: $clr-primary;
+            box-shadow: 0 0 0 3px rgba(45, 132, 189, 0.1);
+          }
+          
+          &::placeholder {
+            color: $clr-gray-400;
+          }
+          
+          &.date-input {
+            color-scheme: light;
+          }
+          
+          &.amount-input {
+            font-family: 'Courier New', monospace;
+            font-weight: 500;
+            text-align: right;
+          }
         }
-
-        select {
-            border-radius: .5rem;
-            padding: .25rem .5rem;
-        }
-
-        .no-products {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: .5rem;
-
-            .new-product-span {
-                color: $clr-secondary;
-
-                &:hover {
-                    cursor: pointer;
-                    color: $clr-txt;
-                }
+        
+        .select-wrapper {
+          position: relative;
+          
+          .form-select {
+            width: 100%;
+            padding: $spacing-sm $spacing-md;
+            border: 1px solid $clr-bg-dark;
+            border-radius: $radius-md;
+            background: $clr-white;
+            color: $clr-txt;
+            font-size: 0.875rem;
+            transition: all $transition-fast;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: left 12px center;
+            background-repeat: no-repeat;
+            background-size: 16px 12px;
+            padding-left: calc(#{$spacing-sm} + 16px + #{$spacing-sm});
+            
+            &:focus {
+              outline: none;
+              border-color: $clr-primary;
+              box-shadow: 0 0 0 3px rgba(45, 132, 189, 0.1);
             }
+          }
         }
+      }
+      
+      // Form Actions
+      .form-actions {
+        display: flex;
+        gap: $spacing-md;
+        margin-top: $spacing-md;
+        
+        .btn-secondary {
+          flex: 1;
+          padding: $spacing-sm $spacing-lg;
+          border: 1px solid $clr-bg-dark;
+          border-radius: $radius-md;
+          background: $clr-white;
+          color: $clr-txt;
+          font-size: 0.875rem;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all $transition-fast;
+          
+          &:hover {
+            background: $clr-gray-50;
+            border-color: $clr-gray-300;
+          }
+        }
+        
+        .btn-primary {
+          flex: 2;
+          padding: $spacing-sm $spacing-lg;
+          border: none;
+          border-radius: $radius-md;
+          background: $clr-primary;
+          color: $clr-white;
+          font-size: 0.875rem;
+          font-weight: 500;
+          cursor: pointer;
+          transition: all $transition-fast;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: $spacing-sm;
+          
+          &:hover {
+            background: $clr-primary-dark;
+          }
+        }
+      }
     }
+  }
+  
+  // Error Message
+  .error-message {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-md $spacing-lg;
+    background: $clr-section-blush-light;
+    border-top: 1px solid $clr-section-blush-deep;
+    color: $clr-error;
+    font-size: 0.875rem;
+    
+    svg {
+      color: $clr-redish;
+      flex-shrink: 0;
+    }
+  }
+  
+  // Responsive Design
+  @media (max-width: 768px) {
+    width: 95vw;
+    max-height: 95vh;
+    
+    .modal-header {
+      padding: $spacing-md;
+      
+      .header-content {
+        .modal-icon {
+          width: 40px;
+          height: 40px;
+        }
+        
+        .header-text {
+          h2 {
+            font-size: 1rem;
+          }
+          
+          p {
+            font-size: 0.75rem;
+          }
+        }
+      }
+    }
+    
+    .modal-body {
+      padding: $spacing-md;
+      
+      form {
+        gap: $spacing-md;
+        
+        .form-actions {
+          flex-direction: column;
+          
+          .btn-secondary,
+          .btn-primary {
+            flex: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Animations
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
 }

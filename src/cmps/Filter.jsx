@@ -1,10 +1,11 @@
 import { useState } from "react"
+import { Search, Filter as FilterIcon, X, Check, ChevronDown } from "lucide-react"
 
 export function Filter({ filterBy, setFilterBy, type, selectOptions, expenseTypes }) {
     const [showMaxInv, setShowMaxInv] = useState(false)
     const [isSelect, setIsSelect] = useState(false)
     const { from, to, maxNum, sortBy, sortDir } = filterBy
-
+    const paymentTypes = [{ title: 'מזומן', value: 'cash' }, { title: 'אשראי', value: 'card' }, { title: 'העברה בנקאית', value: 'transfer' }, { title: 'אחר', value: 'other' },]
 
     function setNewFilter({ target }) {
         setIsSelect(false)
@@ -23,6 +24,18 @@ export function Filter({ filterBy, setFilterBy, type, selectOptions, expenseType
             newTypes = [...filterBy.selectedTypes, type]
         }
         filterBy.selectedTypes = newTypes
+        const newFilter = JSON.parse(JSON.stringify(filterBy))
+        setFilterBy(newFilter)
+    }
+    
+    function setPaymentTypes(type) {
+        let newTypes = []
+        if (filterBy.selectedPaymentTypes.includes(type)) {
+            newTypes = filterBy.selectedPaymentTypes.filter(t => type !== t)
+        } else {
+            newTypes = [...filterBy.selectedPaymentTypes, type]
+        }
+        filterBy.selectedPaymentTypes = newTypes
         const newFilter = JSON.parse(JSON.stringify(filterBy))
         setFilterBy(newFilter)
     }
@@ -59,61 +72,167 @@ export function Filter({ filterBy, setFilterBy, type, selectOptions, expenseType
 
     return (
         <section className="filter">
-            <span className="tag">אפשרויות סינון</span>
-            <section className="search-input">
-                <label htmlFor="txt">
-                    <img src="https://res.cloudinary.com/dollaguij/image/upload/v1701785795/wednesday/ztavmltqyl9th2ndasir.svg" alt="" />
-                </label>
-                <input type="text" name="txt" id="txt" placeholder="חיפוש" onInput={setNewFilter} />
-            </section>
-            {/* <div className="max-inventory">
-                <div className="inventory-checkbox">
-                    <input type="checkbox" name="lowInventory" id="lowInventory" onChange={setLowInventory} />
-                    <label htmlFor="lowInventory">מלאי נמוך</label>
+            {/* Search Section */}
+            <div className="filter-section">
+                <div className="section-header">
+                    <FilterIcon size={18} />
+                    <h4>חיפוש וסינון</h4>
                 </div>
-                <div className="inventory-checkbox">
-                    <input type="checkbox" name="maxInventory" id="maxInventory" onChange={setMaxInventory} />
-                    <label htmlFor="maxInventory">מלאי מקס'</label>
+                
+                <div className="search-input">
+                    <div className="input-wrapper">
+                        <Search size={20} className="search-icon" />
+                        <input 
+                            type="text" 
+                            name="txt" 
+                            id="txt" 
+                            placeholder="חפש הוצאות..." 
+                            onInput={setNewFilter}
+                            className="search-field"
+                        />
+                    </div>
                 </div>
-                {showMaxInv && <input className="num-input" type="number" name="maxNum" value={maxNum} onInput={setNewFilter} />}
-                {!showMaxInv && <input className="num-input" type="number" name="maxNum" value={maxNum} onInput={setNewFilter} step="10" disabled />}
-            </div> */}
-            <div className="type-filter">
-                {expenseTypes.map(type =>
-                    <span key={type} className={filterBy.selectedTypes.includes(type) ? 'selected' : ''} onClick={() => setExpenseTypes(type)}>{type}</span>
-                )}
             </div>
-            {/* {type === 'sales' && <div className="paid-options">
-                <div className="paid-checkbox">
-                    <input type="checkbox" name="true" id="paid" onChange={setPaid} />
-                    <label htmlFor="paid">שולם</label>
+
+            {/* Payment Types Filter */}
+            {paymentTypes.length > 0 && (
+                <div className="filter-section">
+                    <div className="section-header">
+                        <h4>צורת תשלום</h4>
+                        {filterBy.selectedPaymentTypes.length > 0 && (
+                            <button 
+                                className="clear-filter" 
+                                onClick={() => {
+                                    filterBy.selectedPaymentTypes = []
+                                    const newFilter = JSON.parse(JSON.stringify(filterBy))
+                                    setFilterBy(newFilter)
+                                }}
+                            >
+                                <X size={14} />
+                                נקה
+                            </button>
+                        )}
+                    </div>
+                    
+                    <div className="filter-chips">
+                        {paymentTypes.map(type => (
+                            <button
+                                key={type.value}
+                                className={`filter-chip ${
+                                    filterBy.selectedPaymentTypes.includes(type.value) ? 'selected' : ''
+                                }`}
+                                onClick={() => setPaymentTypes(type.value)}
+                            >
+                                {filterBy.selectedPaymentTypes.includes(type.value) && (
+                                    <Check size={14} />
+                                )}
+                                {type.title}
+                            </button>
+                        ))}
+                    </div>
                 </div>
-                <div className="paid-checkbox">
-                    <input type="checkbox" name="partial" id="partial" onChange={setPaid} />
-                    <label htmlFor="partial">שולם חלקית</label>
+            )}
+
+            {/* Expense Types Filter */}
+            {expenseTypes.length > 0 && (
+                <div className="filter-section">
+                    <div className="section-header">
+                        <h4>סוג הוצאה</h4>
+                        {filterBy.selectedTypes.length > 0 && (
+                            <button 
+                                className="clear-filter" 
+                                onClick={() => {
+                                    filterBy.selectedTypes = []
+                                    const newFilter = JSON.parse(JSON.stringify(filterBy))
+                                    setFilterBy(newFilter)
+                                }}
+                            >
+                                <X size={14} />
+                                נקה
+                            </button>
+                        )}
+                    </div>
+                    
+                    <div className="filter-chips">
+                        {expenseTypes.map(type => (
+                            <button
+                                key={type}
+                                className={`filter-chip ${
+                                    filterBy.selectedTypes.includes(type) ? 'selected' : ''
+                                }`}
+                                onClick={() => setExpenseTypes(type)}
+                            >
+                                {filterBy.selectedTypes.includes(type) && (
+                                    <Check size={14} />
+                                )}
+                                {type}
+                            </button>
+                        ))}
+                    </div>
                 </div>
-                <div className="paid-checkbox">
-                    <input type="checkbox" name="false" id="notPaid" onChange={setPaid} />
-                    <label htmlFor="notPaid">לא שולם</label>
+            )}
+
+            {/* Sort Options */}
+            {selectOptions && (
+                <div className="filter-section">
+                    <div className="section-header">
+                        <h4>מיון</h4>
+                    </div>
+                    
+                    <div className="sort-dropdown">
+                        <button 
+                            className="sort-button" 
+                            onClick={() => setIsSelect(!isSelect)}
+                        >
+                            <span>{selectOptions.find(option => option.value === sortBy)?.title || 'בחר מיון'}</span>
+                            <ChevronDown 
+                                size={16} 
+                                className={`chevron ${isSelect ? 'open' : ''}`} 
+                            />
+                        </button>
+                        
+                        {isSelect && (
+                            <div className="sort-dropdown-menu">
+                                {selectOptions.map((option, idx) => (
+                                    <button
+                                        key={idx}
+                                        className={`sort-option ${
+                                            filterBy.sortBy === option.value ? 'selected' : ''
+                                        }`}
+                                        onClick={() => setNewFilter({ target: { name: 'sortBy', value: option.value } })}
+                                    >
+                                        <span>{option.title}</span>
+                                        {filterBy.sortBy === option.value && (
+                                            <Check size={16} />
+                                        )}
+                                    </button>
+                                ))}
+                            </div>
+                        )}
+                    </div>
                 </div>
-            </div>} */}
-            {selectOptions && <section className="sort">
-                <button onClick={() => setIsSelect(!isSelect)}>
-                    <span>{selectOptions.find(option => option.value === sortBy).title}</span>
-                </button>
-                {/* <button className="sortDir-btn" onClick={() => setNewFilter({ target: { name: 'sortDir', value: sortDir === 'up' ? 'down' : 'up' } })}>
-                    <img className={`sortDir ${sortDir === 'up' ? 'up' : 'down'}`} src="https://res.cloudinary.com/dollaguij/image/upload/v1701785794/wednesday/bwudwrzkha2pdcy3ga7q.svg" alt="" />
-                </button> */}
-            </section>}
-            {isSelect && <section className="select-modal">
-                {selectOptions.map((option, idx) =>
-                    <div key={idx} className={`select-option`}
-                        onClick={() => setNewFilter({ target: { name: 'sortBy', value: option.value } })}><span>{option.title}</span>
-                        {(filterBy.sortBy === option.value) &&
-                            <img className={"details-svg-img"} src="https://res.cloudinary.com/dollaguij/image/upload/v1699194254/svg/checked_paj0fg.svg" alt="" />
-                        }
-                    </div>)}
-            </section>}
+            )}
+
+            {/* Active Filters Summary */}
+            {(filterBy.selectedPaymentTypes.length > 0 || filterBy.selectedTypes.length > 0) && (
+                <div className="filter-summary">
+                    <div className="summary-header">
+                        <span>פילטרים פעילים ({filterBy.selectedPaymentTypes.length + filterBy.selectedTypes.length})</span>
+                        <button 
+                            className="clear-all-filters"
+                            onClick={() => {
+                                filterBy.selectedPaymentTypes = []
+                                filterBy.selectedTypes = []
+                                const newFilter = JSON.parse(JSON.stringify(filterBy))
+                                setFilterBy(newFilter)
+                            }}
+                        >
+                            <X size={14} />
+                            נקה הכל
+                        </button>
+                    </div>
+                </div>
+            )}
         </section>
     )
 }

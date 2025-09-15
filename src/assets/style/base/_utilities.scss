@@ -1,0 +1,205 @@
+// ===== UTILITY CLASSES =====
+
+// Spacing utilities
+.m-0 { margin: 0; }
+.m-xs { margin: $spacing-xs; }
+.m-sm { margin: $spacing-sm; }
+.m-md { margin: $spacing-md; }
+.m-lg { margin: $spacing-lg; }
+.m-xl { margin: $spacing-xl; }
+.m-2xl { margin: $spacing-2xl; }
+
+.mt-0 { margin-top: 0; }
+.mt-xs { margin-top: $spacing-xs; }
+.mt-sm { margin-top: $spacing-sm; }
+.mt-md { margin-top: $spacing-md; }
+.mt-lg { margin-top: $spacing-lg; }
+.mt-xl { margin-top: $spacing-xl; }
+.mt-2xl { margin-top: $spacing-2xl; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-xs { margin-bottom: $spacing-xs; }
+.mb-sm { margin-bottom: $spacing-sm; }
+.mb-md { margin-bottom: $spacing-md; }
+.mb-lg { margin-bottom: $spacing-lg; }
+.mb-xl { margin-bottom: $spacing-xl; }
+.mb-2xl { margin-bottom: $spacing-2xl; }
+
+.p-0 { padding: 0; }
+.p-xs { padding: $spacing-xs; }
+.p-sm { padding: $spacing-sm; }
+.p-md { padding: $spacing-md; }
+.p-lg { padding: $spacing-lg; }
+.p-xl { padding: $spacing-xl; }
+.p-2xl { padding: $spacing-2xl; }
+
+.px-0 { padding-left: 0; padding-right: 0; }
+.px-xs { padding-left: $spacing-xs; padding-right: $spacing-xs; }
+.px-sm { padding-left: $spacing-sm; padding-right: $spacing-sm; }
+.px-md { padding-left: $spacing-md; padding-right: $spacing-md; }
+.px-lg { padding-left: $spacing-lg; padding-right: $spacing-lg; }
+.px-xl { padding-left: $spacing-xl; padding-right: $spacing-xl; }
+
+.py-0 { padding-top: 0; padding-bottom: 0; }
+.py-xs { padding-top: $spacing-xs; padding-bottom: $spacing-xs; }
+.py-sm { padding-top: $spacing-sm; padding-bottom: $spacing-sm; }
+.py-md { padding-top: $spacing-md; padding-bottom: $spacing-md; }
+.py-lg { padding-top: $spacing-lg; padding-bottom: $spacing-lg; }
+.py-xl { padding-top: $spacing-xl; padding-bottom: $spacing-xl; }
+
+// Border radius utilities
+.rounded-none { border-radius: 0; }
+.rounded-xs { border-radius: $radius-xs; }
+.rounded-sm { border-radius: $radius-sm; }
+.rounded-md { border-radius: $radius-md; }
+.rounded-lg { border-radius: $radius-lg; }
+.rounded-xl { border-radius: $radius-xl; }
+.rounded-2xl { border-radius: $radius-2xl; }
+.rounded-full { border-radius: $radius-full; }
+
+// Shadow utilities
+.shadow-none { box-shadow: none; }
+.shadow-sm { box-shadow: $shadow-sm; }
+.shadow-md { box-shadow: $shadow-md; }
+.shadow-lg { box-shadow: $shadow-lg; }
+.shadow-xl { box-shadow: $shadow-xl; }
+.shadow-2xl { box-shadow: $shadow-2xl; }
+
+// Display utilities
+.hidden { display: none; }
+.block { display: block; }
+.inline { display: inline; }
+.inline-block { display: inline-block; }
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+.grid { display: grid; }
+
+// Flexbox utilities
+.flex-row { flex-direction: row; }
+.flex-col { flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-nowrap { flex-wrap: nowrap; }
+
+.justify-start { justify-content: flex-start; }
+.justify-end { justify-content: flex-end; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+
+.items-start { align-items: flex-start; }
+.items-end { align-items: flex-end; }
+.items-center { align-items: center; }
+.items-stretch { align-items: stretch; }
+
+.flex-1 { flex: 1; }
+.flex-auto { flex: auto; }
+.flex-none { flex: none; }
+
+// Position utilities
+.relative { position: relative; }
+.absolute { position: absolute; }
+.fixed { position: fixed; }
+.sticky { position: sticky; }
+
+// Width utilities
+.w-full { width: 100%; }
+.w-auto { width: auto; }
+.w-fit { width: fit-content; }
+
+// Height utilities
+.h-full { height: 100%; }
+.h-auto { height: auto; }
+.h-fit { height: fit-content; }
+
+// Overflow utilities
+.overflow-hidden { overflow: hidden; }
+.overflow-auto { overflow: auto; }
+.overflow-scroll { overflow: scroll; }
+
+// Cursor utilities
+.cursor-pointer { cursor: pointer; }
+.cursor-not-allowed { cursor: not-allowed; }
+.cursor-default { cursor: default; }
+
+// Opacity utilities
+.opacity-0 { opacity: 0; }
+.opacity-25 { opacity: 0.25; }
+.opacity-50 { opacity: 0.5; }
+.opacity-75 { opacity: 0.75; }
+.opacity-100 { opacity: 1; }
+
+// Background utilities
+.bg-transparent { background-color: transparent; }
+.bg-white { background-color: $clr-white; }
+.bg-primary { background-color: $clr-primary; }
+.bg-secondary { background-color: $clr-secondary; }
+.bg-success { background-color: $clr-success; }
+.bg-warning { background-color: $clr-warning; }
+.bg-error { background-color: $clr-error; }
+
+// Modern component utilities
+.card {
+    @include card;
+}
+
+.glass-card {
+    @include glass-card;
+}
+
+.btn {
+    @include btn-base;
+}
+
+.btn-primary {
+    @include btn-primary;
+}
+
+.btn-secondary {
+    @include btn-secondary;
+}
+
+.btn-outline {
+    @include btn-outline;
+}
+
+.btn-ghost {
+    @include btn-ghost;
+}
+
+.input {
+    @include input-base;
+}
+
+// Animation utilities
+.fade-in {
+    @include fade-in;
+}
+
+.slide-up {
+    @include slide-up;
+}
+
+.hover-lift {
+    @include hover-lift;
+}
+
+// Responsive utilities
+@include for-mobile {
+    .mobile\:hidden { display: none; }
+    .mobile\:block { display: block; }
+    .mobile\:flex { display: flex; }
+    .mobile\:text-center { text-align: center; }
+    .mobile\:text-left { text-align: left; }
+}
+
+@include for-tablet {
+    .tablet\:hidden { display: none; }
+    .tablet\:block { display: block; }
+    .tablet\:flex { display: flex; }
+}
+
+@include for-normal-layout {
+    .desktop\:hidden { display: none; }
+    .desktop\:block { display: block; }
+    .desktop\:flex { display: flex; }
+}

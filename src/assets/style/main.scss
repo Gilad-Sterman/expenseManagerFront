@@ -1,13 +1,16 @@
+@import "tailwindcss";
+
 // SETUP
-@import 'setup/typography';
 @import 'setup/variables';
 @import 'setup/mixins';
+@import 'setup/typography';
 @import 'setup/functions';
 
 // BASICS
 @import 'base/helpers';
 @import 'base/base';
 @import 'base/layout';
+@import 'base/utilities';
 
 // COMPONENTS
 @import 'cmps/AppHeader';
